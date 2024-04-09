@@ -98,8 +98,6 @@ abstract class AbstractSamlModel implements SamlElementInterface
                     $child = $doc->createElementNS($namespaceUri, $nodeName, (string) $object);
 
                     if($nodeName == "AttributeValue"){
-                        //$child->setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:xsi', 'http://www.w3.org/2001/XMLSchema-instance');
-                        //$child->setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:xs', 'http://www.w3.org/2001/XMLSchema');
                         $child->setAttributeNS('http://www.w3.org/2001/XMLSchema-instance', 'xsi:type', 'xs:string');
                     }
                 } else {

@@ -54,9 +54,6 @@ class AttributeStatement extends AbstractStatement
      */
     public function serialize(\DOMNode $parent, SerializationContext $context)
     {
-        $this->createAttributeNS('http://www.w3.org/2001/XMLSchema-instance', 'xsi:type');
-        $this->createAttributeNS('http://www.w3.org/2001/XMLSchema', 'xs:string');
-
         $result = $this->createElement('AttributeStatement', SamlConstants::NS_ASSERTION, $parent, $context);
 
         $this->manyElementsToXml($this->getAllAttributes(), $result, $context, null);
