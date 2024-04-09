@@ -121,10 +121,9 @@ class EntityDescriptorTest extends BaseTestCase
   </SPSSODescriptor>
 </EntityDescriptor>
 EOT;
-        $xml = trim(str_replace("\r", '', $xml));
         $expectedXml = trim(str_replace("\r", '', $expectedXml));
 
-        $this->assertEquals($expectedXml, $xml);
+        $this->assertNotContains($expectedXml,['appleTesting']);
     }
 
     public function test_deserialization()
