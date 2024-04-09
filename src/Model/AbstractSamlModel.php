@@ -64,11 +64,12 @@ abstract class AbstractSamlModel implements SamlElementInterface
     }
 
     /**
-     * @param array|null  $value
+     * @param array|null $value
      * @param string|null $nodeName
      * @param string|null $namespaceUri
      *
      * @throws \LogicException
+     * @throws \DOMException
      */
     protected function manyElementsToXml($value, \DOMNode $node, SerializationContext $context, $nodeName = null, $namespaceUri = null)
     {
@@ -89,7 +90,7 @@ abstract class AbstractSamlModel implements SamlElementInterface
             } elseif ($nodeName) {
                 $doc = $context->getDocument();
 
-                if($nodeName == 'AttributeValue'){
+                if ($nodeName == 'AttributeValue') {
                     $doc->createAttributeNS('http://www.w3.org/2001/XMLSchema-instance', 'xsi:type');
                     $doc->createAttributeNS('http://www.w3.org/2001/XMLSchema', 'xs:string');
                 }
@@ -97,7 +98,7 @@ abstract class AbstractSamlModel implements SamlElementInterface
                 if ($namespaceUri) {
                     $child = $doc->createElementNS($namespaceUri, $nodeName, (string) $object);
 
-                    if($nodeName == "AttributeValue"){
+                    if ($nodeName == "AttributeValue") {
                         $child->setAttributeNS('http://www.w3.org/2001/XMLSchema-instance', 'xsi:type', 'xs:string');
                     }
                 } else {
